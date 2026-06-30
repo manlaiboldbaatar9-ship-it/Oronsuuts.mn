@@ -1,5 +1,5 @@
-import Image from 'next/image'
-import Link from 'next/link'
+import Image from "next/image";
+import Link from "next/link";
 import {
   Search,
   Scale,
@@ -8,37 +8,38 @@ import {
   Ruler,
   Users,
   ArrowRight,
-} from 'lucide-react'
-import { SiteHeader } from '@/components/site-header'
-import { SiteFooter } from '@/components/site-footer'
-import { ApartmentCard } from '@/components/apartment-card'
-import { apartments } from '@/lib/apartments'
+} from "lucide-react";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
+import { ApartmentCard } from "@/components/apartment-card";
+import { apartments } from "@/lib/apartments";
+import Script from "next/script";
 
 const features = [
   {
     icon: Scale,
-    title: 'Давуу ба сул тал',
-    desc: 'Орон сууц бүрийн бодит давуу болон сул талыг ил тод харьцуулна.',
+    title: "Давуу ба сул тал",
+    desc: "Орон сууц бүрийн бодит давуу болон сул талыг ил тод харьцуулна.",
   },
   {
     icon: Ruler,
-    title: 'М.кв үнэ',
-    desc: 'Нэг метр квадратын үнийг шууд харж, төсвөө тооцоолоход хялбар.',
+    title: "М.кв үнэ",
+    desc: "Нэг метр квадратын үнийг шууд харж, төсвөө тооцоолоход хялбар.",
   },
   {
     icon: MapPin,
-    title: 'Байршил',
-    desc: 'Орон сууц яг хаана байгааг газрын зураг дээр харна.',
+    title: "Байршил",
+    desc: "Орон сууц яг хаана байгааг газрын зураг дээр харна.",
   },
   {
     icon: Star,
-    title: 'Хүмүүсийн үнэлгээ',
-    desc: 'Бодит оршин суугчдын өгсөн үнэлгээ, сэтгэгдэлтэй танилц.',
+    title: "Хүмүүсийн үнэлгээ",
+    desc: "Бодит оршин суугчдын өгсөн үнэлгээ, сэтгэгдэлтэй танилц.",
   },
-]
+];
 
 export default function HomePage() {
-  const featured = apartments.slice(0, 3)
+  const featured = apartments.slice(0, 3);
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -66,8 +67,8 @@ export default function HomePage() {
                 Бүх насныханд зориулсан
               </span>
               <h1 className="mt-5 text-4xl font-bold leading-tight tracking-tight text-balance sm:text-5xl">
-                Шинэ орон сууцаа{' '}
-                <span className="text-primary">ухаалгаар</span> сонгоорой
+                Шинэ орон сууцаа <span className="text-primary">ухаалгаар</span>{" "}
+                сонгоорой
               </h1>
               <p className="mt-4 text-lg leading-relaxed text-muted-foreground text-pretty">
                 Монгол дахь орон сууцуудын давуу болон сул талыг харьцуулж, м.кв
@@ -108,7 +109,7 @@ export default function HomePage() {
 
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {features.map((f) => {
-              const Icon = f.icon
+              const Icon = f.icon;
               return (
                 <div
                   key={f.title}
@@ -122,7 +123,7 @@ export default function HomePage() {
                     {f.desc}
                   </p>
                 </div>
-              )
+              );
             })}
           </div>
         </section>
@@ -153,9 +154,12 @@ export default function HomePage() {
             ))}
           </div>
         </section>
+        <Script>
+          {`(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="rO4xVFubTIEhBX-MGweZ7";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();`}
+        </Script>
       </main>
 
       <SiteFooter />
     </div>
-  )
+  );
 }
